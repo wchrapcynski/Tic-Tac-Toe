@@ -1,3 +1,4 @@
+// This area sets up a number of variables to make the logic work.
 let winner = undefined;
 let gameOver = false;
 const board = [
@@ -43,9 +44,6 @@ const board = [
     }
 ]
 const squares = document.querySelectorAll(".square");
-for (let i = 0; i < 9; i++) {
-    squares[i].classList.add("redPointer");
-}
 const winningCombos = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 let currentPlayer = 1
 let filled = 0;
@@ -63,6 +61,10 @@ const messageArea = document.querySelector(".message");
 let message = "It's Player 1's turn";
 messageArea.innerText = message;
 
+// A game reset happens on load to make sure the game is ready.
+resetGame();
+
+// Checks to see if there is a winner.
 function winnerCheck() {
     for (let i = 0; i < 8; i++) {
         if (board[winningCombos[i][0]].clicked === "red" && 
@@ -94,6 +96,7 @@ function winnerCheck() {
     }
 }
 
+// If all squares are filled without a winner, there is a tie.
 function checkTie() {
     for (let i = 1; i <= 9; i++) {
         if (filled === 9 && winner === undefined && gameOver === false) {
@@ -110,6 +113,7 @@ function checkTie() {
     }
 }
 
+// This is the rest function.
 document.querySelector('.reset').addEventListener('click', resetGame);
 function resetGame() {
     for (let i = 1; i <= 9; i++) {
@@ -130,6 +134,7 @@ function resetGame() {
     winner = undefined;
 }
 
+// This is the game logic function that runs automagically. 
 (function gameLogic() {
     for(let i = 0; i < 9; i++) {
         squares[i].addEventListener('click', function() {
