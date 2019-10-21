@@ -129,6 +129,7 @@ function resetGame() {
         filled = 0;
         squares[i - 1].classList.remove("blue");
         squares[i - 1].classList.remove("red");
+        messageArea.classList.remove("blackText");
         messageArea.classList.remove("blueText");
         messageArea.classList.add("redText");
         message = "It's Player 1's turn";
