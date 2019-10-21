@@ -73,23 +73,29 @@ function resetGame() {
     for (let i = 1; i <= 9; i++) {
         board[i].clicked = undefined;
         filled = 0;
+        squares[i - 1].classList.remove("blue");
+        squares[i - 1].classList.remove("red");
     }
+    winner = undefined;
 }
 
-for(let i = 0; i < 9; i++) {
-    squares[i].addEventListener('click', function() {
-        if (currentPlayer === 1 && board[i + 1].clicked === undefined && winner === undefined) {
-            this.classList.toggle("red");
-            board[i+1].clicked = "red"
-            filled += 1;
-            currentPlayer = 2;
-        } else if (currentPlayer === 2 && board[i + 1].clicked === undefined && winner === undefined) {
-            this.classList.toggle("blue");
-            board[i + 1].clicked = "blue";
-            filled += 1;
-            currentPlayer = 1;
-        }
-        winnerCheck()
-        checkTie()
-    })
+(function gameLogic() {
+    for(let i = 0; i < 9; i++) {
+        squares[i].addEventListener('click', function() {
+            if (currentPlayer === 1 && board[i + 1].clicked === undefined && winner === undefined) {
+                this.classList.toggle("red");
+                board[i+1].clicked = "red"
+                filled += 1;
+                currentPlayer = 2;
+            } else if (currentPlayer === 2 && board[i + 1].clicked === undefined && winner === undefined) {
+                this.classList.toggle("blue");
+                board[i + 1].clicked = "blue";
+                filled += 1;
+                currentPlayer = 1;
+            }
+            winnerCheck()
+            checkTie()
+        })
+    }
 }
+)();
