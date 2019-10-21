@@ -10,7 +10,7 @@ const board = [
     },
     {
         square: 2,
-        clicked: "undefined"
+        clicked: undefined
     },
     {
         square: 3,
@@ -41,7 +41,9 @@ const board = [
         clicked: undefined
     }
 ]
+const squares = document.querySelectorAll(".square");
 const winningCombos = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
+let currentPlayer = 1
 
 function winnerCheck() {
     for (let i = 0; i < 8; i++) {
@@ -70,4 +72,18 @@ function resetGame() {
     for (let i = 1; i <= 9; i++) {
         board[i].clicked = undefined;
     }
+}
+
+for(let i = 0; i < 9; i++) {
+    squares[i].addEventListener('click', function() {
+        if (currentPlayer === 1 && board[i + 1].clicked === undefined) {
+            this.classList.toggle("red");
+            board[i+1].clicked = "red"
+            currentPlayer = 2;
+        } else if (currentPlayer === 2 && board[i + 1].clicked === undefined) {
+            this.classList.toggle("blue");
+            board[i + 1].clicked = "blue";
+            currentPlayer = 1;
+        }
+    })
 }

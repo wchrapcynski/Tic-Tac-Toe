@@ -20,3 +20,11 @@ header {
     grid-template-rows: 20vh 20vh 20vh;
     grid-template-columns: 20vh 20vh 20vh;
 }
+
+.blue {
+    background-color: blue;
+}
+
+.red {
+    background-color: red;
+}
