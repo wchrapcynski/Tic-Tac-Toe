@@ -44,6 +44,7 @@ const board = [
 const squares = document.querySelectorAll(".square");
 const winningCombos = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 let currentPlayer = 1
+let filled = 0;
 
 function winnerCheck() {
     for (let i = 0; i < 8; i++) {
@@ -62,7 +63,7 @@ function winnerCheck() {
 
 function checkTie() {
     for (let i = 1; i <= 9; i++) {
-        if(board[i].clicked !== undefined && winner === undefined) {
+        if(filled === 9 && winner === undefined) {
             winner = "It's a tie!"
         }
     }
@@ -71,19 +72,24 @@ function checkTie() {
 function resetGame() {
     for (let i = 1; i <= 9; i++) {
         board[i].clicked = undefined;
+        filled = 0;
     }
 }
 
 for(let i = 0; i < 9; i++) {
     squares[i].addEventListener('click', function() {
-        if (currentPlayer === 1 && board[i + 1].clicked === undefined) {
+        if (currentPlayer === 1 && board[i + 1].clicked === undefined && winner === undefined) {
             this.classList.toggle("red");
             board[i+1].clicked = "red"
+            filled += 1;
             currentPlayer = 2;
-        } else if (currentPlayer === 2 && board[i + 1].clicked === undefined) {
+        } else if (currentPlayer === 2 && board[i + 1].clicked === undefined && winner === undefined) {
             this.classList.toggle("blue");
             board[i + 1].clicked = "blue";
+            filled += 1;
             currentPlayer = 1;
         }
+        winnerCheck()
+        checkTie()
     })
 }
