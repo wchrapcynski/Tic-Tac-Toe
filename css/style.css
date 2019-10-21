@@ -1,0 +1,22 @@
+body {
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10em;
+}
+
+.layoutSetup {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 60vh 1fr;
+}
+
+.board {
+    display: grid;
+    grid-template-rows: 20vh 20vh 20vh;
+    grid-template-columns: 20vh 20vh 20vh;
+}
