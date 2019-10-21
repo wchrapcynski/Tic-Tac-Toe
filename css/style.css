@@ -90,7 +90,17 @@ button {
 
 @media only screen and (min-width: 800px) {
     .board {
-        grid-template-rows: 15vw 15vw 15vw;
-        grid-template-columns: 15vw 15vw 15vw;
+        grid-template-rows: 14vw 14vw 14vw;
+        grid-template-columns: 14vw 14vw 14vw;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .board {
+        grid-template-rows: 9vw 9vw 9vw;
+        grid-template-columns: 9vw 9vw 9vw;
+    }
+    .square {
+        border-radius: 3vw;
     }
 }
