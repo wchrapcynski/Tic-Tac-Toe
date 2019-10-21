@@ -6,7 +6,22 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 10em;
+    height: 10vh;
+    text-align: center;
+    font-size: 10vh;
+    padding: 0.5em 0;
+}
+
+.message {
+    padding: 10px;
+    text-align: center;
+}
+
+.square {
+    border: 1px solid black;
+    margin: 3px;
+    border-radius: 25px;
+    box-shadow: 2px 2px;
 }
 
 .layoutSetup {

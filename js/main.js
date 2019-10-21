@@ -45,6 +45,9 @@ const squares = document.querySelectorAll(".square");
 const winningCombos = [[1,2,3], [4,5,6], [7,8,9], [1,4,7], [2,5,8], [3,6,9], [1,5,9], [3,5,7]]
 let currentPlayer = 1
 let filled = 0;
+const messageArea = document.querySelector(".message");
+let message = "Player 1 is red and Player 2 is blue.\nIt's Player 1's turn";
+messageArea.innerText = message;
 
 function winnerCheck() {
     for (let i = 0; i < 8; i++) {
