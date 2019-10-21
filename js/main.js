@@ -79,6 +79,10 @@ function winnerCheck() {
             redScore += 1;
             redScoreText.innerText = redScore;
             gameOver = true;
+            for (let i = 0; i < 9; i++) {
+                squares[i].classList.remove("bluePointer");
+                squares[i].classList.add("redPointer");
+            }
         }
         if (board[winningCombos[i][0]].clicked === "blue" &&
             board[winningCombos[i][1]].clicked === "blue" &&
@@ -92,6 +96,10 @@ function winnerCheck() {
             blueScore += 1;
             blueScoreText.innerText = blueScore;
             gameOver = true;
+            for (let i = 0; i < 9; i++) {
+                squares[i].classList.remove("redPointer");
+                squares[i].classList.add("bluePointer");
+            }
         }
     }
 }
